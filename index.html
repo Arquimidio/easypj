@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <!-- TOPO -->
+    <form>
+        <div id="main-area">
+            <div id="flex-top">
+                    <h1>EasyPJ</h1>
+                    <input class="limpar" id="tipoDemanda" type="text" placeholder="Demanda">
+                    <select id="seletorPessoa">
+                        <option value="requerente">Requerente</option>
+                        <option value="requerido">Requerido</option>
+                    </select>
+                    <textarea class="limpar"></textarea>
+                    <button type="button" id="finalizar">Preencher</button>
+                    <button type= "button" id="clearParameters">Limpar parâmetros</button>
+                    <button type= "button" id="clearAll">Limpar tudo</button>
+            </div>
+        </div>
+
+        <!-- REQUERENTE-->
+        <div class="container">
+            <div class="Card requerenteCard">
+                <h1>Requerente</h1>
+                <input class="requerente limpar" id="requerenteNome" type="text" placeholder="Nome">
+                <input class="requerente limpar" id="requerenteCPF"type="text" placeholder="CPF">
+                <input class="requerente limpar" id="requerenteRG" type="text" placeholder="RG">
+                <input class="requerente limpar" id="requerenteEndereco" type="text" placeholder="Endereço">
+                <input class="requerente limpar" id="requerenteCidade" type="text" placeholder="Cidade">
+                <input class="requerente limpar" id="requerenteEstado" type="text" placeholder="Estado">
+                <input class="requerente limpar" id="requerenteBairro" type="text" placeholder="Bairro">
+                <input class="requerente limpar" id="requerenteCEP" type="text" placeholder="CEP">
+            </div>
+
+
+        <!-- REQUERIDO-->
+            <div class="Card requeridoCard">  
+                <h1>Requerido</h1>
+                <input class="requerido limpar" id="requeridoNome" type="text" placeholder="Nome">
+                <input class="requerido limpar" id="requeridoCPF" type="text" placeholder="CPF">
+                <input class="requerido limpar" id="requeridoRG" type="text" placeholder="RG">
+                <input class="requerido limpar" id="requeridoEndereco" type="text" placeholder="Endereço">
+                <input class="requerido limpar" id="requeridoCidade" type="text" placeholder="Cidade">
+                <input class="requerido limpar" id="requeridoEstado" type="text" placeholder="Estado">
+                <input class="requerido limpar" id="requeridoBairro" type="text" placeholder="Bairro">
+                <input class="requerido limpar" id="requeridoCEP" type="text" placeholder="CEP">
+            </div>  
+        </div>
+    </form>
+    <div id="printDiv"></div>
+    <script src="script/script.js"></script>
+
+</body>
+</html>
