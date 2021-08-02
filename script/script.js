@@ -5,6 +5,7 @@ let clearParameters = document.getElementById("clearParameters")
 let allInputs = document.querySelectorAll("input")
 let nomeRequerente = ""
 let data = new Date();
+let months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto"]
 
 clearParameters.addEventListener("click", clearParams)
 clearButton.addEventListener("click", clear)
@@ -20,9 +21,9 @@ function verificarPreenchimento(elemento){
 }
 
 function tratarFormulario(){
-    let pessoaDados = (mainArea.value.replaceAll("\n", ":").replaceAll("*", "")).split(":")
+    let pessoaDados = (mainArea.value.replaceAll("\n", ":").replaceAll("*", "").replaceAll("<", "j").replaceAll("script", "Não")).split(":")
     let pessoaSelecionada = document.getElementById("seletorPessoa").value
-    nomeRequerente = pessoaDados[1]
+    nomeRequerente = pessoaDados[pessoaDados.indexOf("Nome completo") + 1]
     console.log(pessoaDados)
     pessoaDados.forEach((dado, indice) => {
         let nextData = pessoaDados[indice + 1]
@@ -109,7 +110,7 @@ function elaborateString(){
                                                
     
     <br><br><br>${nomeRequerente.toUpperCase()}
-    <br><br>Curitiba, ${data.getDate()} de Agosto de 2021
+    <br><br>Curitiba, ${data.getDate()} de ${(months[data.getMonth()].toLowerCase())} de 2021
     </p>`
 
 

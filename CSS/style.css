@@ -39,6 +39,7 @@ textarea{
     color: white;
     outline: none;
     border: 1px solid white;
+    padding: 5px;
 }
 
 textarea:focus{
@@ -48,7 +49,7 @@ textarea:focus{
     width: 635px;
 }
 #tipoDemanda{
-    width: 500px;
+    width: 270px;
 }
 
 button{
