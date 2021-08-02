@@ -4,10 +4,10 @@
 }
 
 body{
-    font-family: Helvetica;
-    box-sizing: border-box;
     background-color: #000000;
+    box-sizing: border-box;
     color: white;
+    font-family: Helvetica;
 }
 
 form{
@@ -18,34 +18,34 @@ form{
 
 
 #main-area{
-    text-align: center;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
+    text-align: center;
 }
 #flex-top{
-    border: 1px solid white;
     border-radius: 5px;
+    border: 1px solid white;
     padding: 10px;
 }
 
 textarea{
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
     display: block;
+    height: 100px;
     margin: auto;
+    outline: none;
+    padding: 5px;
     resize: none;
     width: 635px;
-    height: 100px;
-    background-color: transparent;
-    color: white;
-    outline: none;
-    border: 1px solid white;
-    padding: 5px;
 }
 
 textarea:focus{
+    height: 100px;
     outline: none;
     padding: 5px;
-    height: 100px;
     width: 635px;
 }
 #tipoDemanda{
@@ -53,14 +53,14 @@ textarea:focus{
 }
 
 button{
-    padding: 5px;
-    margin: 10px;
-    border: 1px solid white;
     background-color: transparent;
     border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
+    border: 1px solid white;
     color: white;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    transition: all 0.2s;
 }
 
 button:hover{
@@ -68,23 +68,32 @@ button:hover{
     font-weight: 900;
 }
 
+select{
+    background-color: transparent;
+    border-radius: 2px;
+    border: 1px solid white;
+    color: white;
+    padding: 2px;
+}
+
+
 /*************** CARTÕES ****************/
 .container{
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     text-align: center;
 }
 
 
 .Card{
-    width: 300px;
-    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
+    margin: 10px;
     padding: 10px;
-    border: 1px solid white;
-    border-radius: 10px;
+    width: 300px;
 }
 
 .requerenteCard{
@@ -96,12 +105,12 @@ button:hover{
 }
 
 input{
-    border: none;
-    border-bottom: 1px solid white;
-    outline: none;
-    margin: 10px;
     background-color: transparent;
+    border:none;
+    border-bottom: 1px solid white;
     color: white;
+    margin: 10px;
+    outline: none;
     
 }
 
@@ -112,15 +121,15 @@ input::placeholder{
 /************* OUTPUT ******************/
 
 #printDiv{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 10px auto;
-    font-size: 12px;
-    width: 635px;
-    border: 1px solid white;
-    padding: 10px;
-    color: black;
     background-color: white;
     border-radius: 5px;
+    border: 1px solid white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 10px auto;
+    padding: 10px;
+    width: 635px;
 }
 
 p{

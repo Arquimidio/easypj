@@ -3,7 +3,6 @@ let finishButton = document.getElementById("finalizar")
 let clearButton = document.getElementById("clearAll")
 let clearParameters = document.getElementById("clearParameters") 
 let allInputs = document.querySelectorAll("input")
-let nomeRequerente = ""
 let data = new Date();
 let months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto"]
 
@@ -15,16 +14,30 @@ for(let element of allInputs){
     element.addEventListener("input", function(){verificarPreenchimento(this)})
 }
 
+/*Função que verifica se determinado campo do formulário está preenchido e muda a cor da borda
+inferior, a depender da resposta (preenchido/não preenchido) */
 function verificarPreenchimento(elemento){
     if (elemento.value !== "") elemento.style.borderColor = "green"
     else elemento.style.borderColor = "red"
 }
 
 function tratarFormulario(){
-    let pessoaDados = (mainArea.value.replaceAll("\n", ":").replaceAll("*", "").replaceAll("<", "j").replaceAll("script", "Não")).split(":")
+
+    /*Formatador de string colata na TEXTAREA*/
+    let pessoaDados = (mainArea.value.replaceAll("\n", ":").
+    replaceAll("*", "").
+    replaceAll("<", "j").
+    replaceAll("script", "Não").replaceAll(";", "")
+    ).split(":")
+
+    /*Seleciona o requerente ou o requerido de acordo com a escolha no DROPDOWN 
+    Funciona pegando o valor selecionado no dropdown e concatenando com o tipo de dado
+    do campo do formulário, especificado na ID de cada campo*/
     let pessoaSelecionada = document.getElementById("seletorPessoa").value
-    nomeRequerente = pessoaDados[pessoaDados.indexOf("Nome completo") + 1]
-    console.log(pessoaDados)
+
+    
+    /*Loop que pega a lista de dados recebidos da string recuperada do email e os estrutura
+    dentro do âmbito do formulário*/
     pessoaDados.forEach((dado, indice) => {
         let nextData = pessoaDados[indice + 1]
         let pessoa = pessoaSelecionada
@@ -57,16 +70,21 @@ function tratarFormulario(){
             case "CEP":
                 document.getElementById(pessoa + "CEP").value = nextData.trim()
                 break;
-        }
-        
+        }   
     })
+
+    /*Loop que verifica quais inputs estão preenchidos e deixa estes verdes, enquanto deixa os não 
+    preenchidos vermelhos*/
     for (let elemento of allInputs){
         verificarPreenchimento(elemento)
     }
+
+    /*Elabora as strings dinâmicas que serão colocadas no modelo de inicial com os dados desejados */
     elaborateString()
 }
 
 function elaborateString(){
+    //Cria a qualificação do requerente de acordo com os dados fornecidos no formulário//
     function makeRequerente(){
         let inputList = document.getElementsByClassName("requerente")
         let qualiRequerente = `${inputList[0].value.toUpperCase()}, brasileiro, 
@@ -77,15 +95,19 @@ function elaborateString(){
         return qualiRequerente  
     }
 
+    /*Cria a qualificação do requerente de acordo com os dados fornecidos no formulário*/
     function makeRequerido(){
         let inputList = document.getElementsByClassName("requerido")
         let qualiRequerido = `<br><br>movida em face de ${inputList[0].value.toUpperCase()}, pessoa jurídica de direito privado, inscrita no 
         CNPJ ${inputList[1].value}, com endereço na ${inputList[3].value}, Bairro ${inputList[6].value}, CEP ${inputList[7].value}, 
-        Município de ${inputList[4].value}, ${inputList[5].value}; pelos fatos e fundamentos a seguir expostos:`    
+        Município de ${inputList[4].value}, ${inputList[5].value} pelos fatos e fundamentos a seguir expostos:`    
         return qualiRequerido
     }
 
-    /**************************************************************************************************** */
+    // --                              MODELÃO                                             --//
+
+    /*Modelo de petição inicial utilizado. Nele serão encaixados todos os dados fornecidos no formulário ou
+    recuperados do email*/
 
     let fullString = `<strong>EXCELENTÍSSIMO SENHOR DOUTOR JUIZ DE DIREITO DA ___ª SECRETARIA
     DO JUIZADO ESPECIAL CÍVEL DO FORO CENTRAL DA COMARCA DA REGIÃO METROPOLITANA DE CURITIBA – 
@@ -109,17 +131,20 @@ function elaborateString(){
     <br><br>pede deferimento, 
                                                
     
-    <br><br><br>${nomeRequerente.toUpperCase()}
+    <br><br><br>${document.getElementById("requerenteNome").value.toUpperCase()}
     <br><br>Curitiba, ${data.getDate()} de ${(months[data.getMonth()].toLowerCase())} de 2021
     </p>`
 
 
 
-    /*******************************************************************************}************** */
+    /********************************************************************************************* */
     
-
+    // Criação do output com a petição inicial //
     document.getElementById("printDiv").innerHTML = fullString
 }
+
+/*Função de limpeza de dados associada ao botão "Limpar tudo".
+Limpa todos os dados preenchidos*/
 
 function clear(){
     for(let element of document.getElementsByClassName("limpar")){
@@ -127,6 +152,8 @@ function clear(){
     }
 }
 
+/*Função de limpeza de dados associada ao botão "Limpar parâmetros"
+Limpa apenas o que for colocado na área de conversão da string recuperada do email*/
 function clearParams(){
     document.querySelector("textarea").value = ""
 }
