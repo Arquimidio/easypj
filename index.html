@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EasyPJ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="CSS/style.css">
+    
 </head>
 <body>
     <!-- TOPO -->
@@ -19,12 +23,12 @@
                         <option value="requerente">Requerente</option>
                         <option value="requerido">Requerido</option>
                     </select>
-                    <select id="quantPessoas">
+                    <!--<select id="quantPessoas">
                         <option value="1">1</option>
                         <option value="1">2</option>
                         <option value="1">3</option>
                         <option value="1">4</option>
-                    </select>
+                    </select> -->
                     <textarea class="limpar"></textarea>
                     <button type="button" id="finalizar">Preencher</button>
                     <button type= "button" id="clearParameters">Limpar parâmetros</button>
@@ -44,6 +48,12 @@
                 <input class="requerente limpar" id="requerenteEstado" type="text" placeholder="Estado">
                 <input class="requerente limpar" id="requerenteBairro" type="text" placeholder="Bairro">
                 <input class="requerente limpar" id="requerenteCEP" type="text" placeholder="CEP">
+                <div class="genderArea">
+                    <input type="radio" id="rdg1" class="radioselect" name="personGender1" value= "H"checked>
+                    <label for="rdg1">Homem</label>
+                    <input type="radio" id="rdg2" class="radioselect" name="personGender1" value= "M">
+                    <label for="rdg2">Mulher</label>
+                </div>
             </div>
 
 
@@ -58,6 +68,18 @@
                 <input class="requerido limpar" id="requeridoEstado" type="text" placeholder="Estado">
                 <input class="requerido limpar" id="requeridoBairro" type="text" placeholder="Bairro">
                 <input class="requerido limpar" id="requeridoCEP" type="text" placeholder="CEP">
+                <div class="genderArea">
+                    <input type="radio" id="rdg3" class="radioselect" name="personGender2" value= "H" checked>
+                    <label for="rdg1">Homem</label>
+                    <input type="radio" id="rdg4" class="radioselect" name="personGender2" value= "M">
+                    <label for="rdg2">Mulher</label>
+                </div>
+                <div class="radioArea">
+                    <input type="radio" id="rd1" class="radioselect" name="personClassification" value= "PJ" checked>
+                    <label for="rd1">Pessoa jurídica</label>
+                    <input type="radio" id="rd2" class="radioselect" name="personClassification" value= "PF">
+                    <label for="rd2">Pessoa física</label>
+                </div>
             </div>  
         </div>
     </form>

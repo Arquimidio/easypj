@@ -15,12 +15,15 @@ for(let element of allInputs){
 }
 
 /*Função que verifica se determinado campo do formulário está preenchido e muda a cor da borda
-inferior, a depender da resposta (preenchido/não preenchido) */
+inferior do input, a depender da resposta (preenchido/não preenchido) */
 function verificarPreenchimento(elemento){
     if (elemento.value !== "") elemento.style.borderColor = "green"
     else elemento.style.borderColor = "red"
 }
 
+/* Função que preenche o formulário com os dados recebidos do email. Além disso, no momento do clique do botão "preencher" ela
+já verifica se o campo está preenchido, realizando a alteração de cor da borda inferior do input e, ao final, chama a função
+elaborateString() para enviar os dados do formulário para a área de exibição da petição estruturada*/
 function tratarFormulario(){
 
     /*Formatador de string colata na TEXTAREA*/
@@ -84,23 +87,40 @@ function tratarFormulario(){
 }
 
 function elaborateString(){
+
     //Cria a qualificação do requerente de acordo com os dados fornecidos no formulário//
     function makeRequerente(){
         let inputList = document.getElementsByClassName("requerente")
-        let qualiRequerente = `${inputList[0].value.toUpperCase()}, brasileiro, 
-        inscrito no Cadastro de Pessoas Físicas do Ministério da Fazenda sob o nº ${inputList[1].value} e portadora do 
-        RG nº ${inputList[2].value}, residente e domiciliado na ${inputList[3].value}, Bairro ${inputList[6].value}, 
+        let gender = document.getElementById("rdg1").checked? "o": "a"
+
+        let qualiRequerente = `${inputList[0].value.toUpperCase()}, brasileir${gender}, 
+        inscrit${gender} no Cadastro de Pessoas Físicas do Ministério da Fazenda sob o nº ${inputList[1].value} 
+        e portador${gender === "a"? "a": ""} do RG nº ${inputList[2].value}, residente e domiciliad${gender} na 
+        ${inputList[3].value}, Bairro ${inputList[6].value}, 
         CEP: ${inputList[7].value}, no Município de ${inputList[4].value}, ${inputList[5].value}, vem, respeitosamente, à presença de 
         Vossa Excelência propor a presente demanda de:`
+
         return qualiRequerente  
     }
 
-    /*Cria a qualificação do requerente de acordo com os dados fornecidos no formulário*/
+    /*Cria a qualificação do requerido de acordo com os dados fornecidos no formulário*/
     function makeRequerido(){
         let inputList = document.getElementsByClassName("requerido")
-        let qualiRequerido = `<br><br>movida em face de ${inputList[0].value.toUpperCase()}, pessoa jurídica de direito privado, inscrita no 
-        CNPJ ${inputList[1].value}, com endereço na ${inputList[3].value}, Bairro ${inputList[6].value}, CEP ${inputList[7].value}, 
-        Município de ${inputList[4].value}, ${inputList[5].value} pelos fatos e fundamentos a seguir expostos:`    
+        let gender = document.getElementById("rdg3").checked? "o": "a"
+
+        // Operador ternário que verifica se o requerido é Pessoa Jurídica ou Pessoa Física, a depender da marcação do usuário//
+        let qualiRequerido = document.getElementById('rd1').checked?
+        `<br><br>movida em face de ${inputList[0].value.toUpperCase()}, pessoa jurídica de 
+        direito privado, inscrita no CNPJ ${inputList[1].value}, com endereço na ${inputList[3].value}, Bairro 
+        ${inputList[6].value}, CEP ${inputList[7].value}, Município de ${inputList[4].value}, 
+        ${inputList[5].value} pelos fatos e fundamentos a seguir expostos:`:
+        `<br><br>movida em face de ${inputList[0].value.toUpperCase()}, brasileir${gender}, 
+        inscrit${gender} no Cadastro de Pessoas Físicas do Ministério da Fazenda sob o nº ${inputList[1].value}
+        e portador${gender === "a"? "a": ""} do RG nº ${inputList[2].value}, 
+        residente e domiciliad${gender} na ${inputList[3].value}, Bairro 
+        ${inputList[6].value}, CEP ${inputList[7].value}, Município de ${inputList[4].value}, 
+        ${inputList[5].value} pelos fatos e fundamentos a seguir expostos:`
+
         return qualiRequerido
     }
 
@@ -126,7 +146,7 @@ function elaborateString(){
     <br><br>e)Seja julgado totalmente procedente, a respectiva ação de ${document.getElementById("tipoDemanda").value.toLowerCase()}, condenando a ré a <mark>pagamento dos danos morais</mark>;`+
     `<br><br>Por fim, pugna a reclamante pela produção de todas as provas em direito admitidas, notadamente o depoimento pessoal, 
     inquirição de testemunhas, juntada posterior de documentos e tudo mais que se fizer necessário para que se cumpra o feito.`+
-    `Dá-se à causa o valor de ${"Algumacoisa"}`+
+    ` Dá-se à causa o valor de R$${document.getElementById("valorCausa").value}`+
     `<p><br><br>Termos em que,<br>
     <br><br>pede deferimento, 
                                                
@@ -149,6 +169,7 @@ Limpa todos os dados preenchidos*/
 function clear(){
     for(let element of document.getElementsByClassName("limpar")){
         element.value = ""
+        element.style.borderColor = "white"
     }
 }
 

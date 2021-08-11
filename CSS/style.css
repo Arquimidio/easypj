@@ -4,7 +4,9 @@
 }
 
 body{
-    background-color: #000000;
+    background-image: linear-gradient(90deg, rgb(97, 9, 9), rgb(134, 15, 15), rgb(190, 14, 14), rgb(190, 14, 14),
+    rgb(134, 15, 15),rgb(97, 9, 9));
+    background-size: cover;
     box-sizing: border-box;
     color: white;
     font-family: Helvetica;
@@ -14,10 +16,19 @@ form{
     color: white;
 }
 
+h1{
+    font-family: "Tangerine";
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+
+
 /**************** AREA TOPO *****************/
 
 
 #main-area{
+    margin-top: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -25,8 +36,10 @@ form{
 }
 #flex-top{
     border-radius: 5px;
-    border: 1px solid white;
+    border: 1px solid rgb(255, 255, 255);
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.534);
+    box-shadow: rgba(0, 0, 0, 0.801) 2px 1px 10px 1px;
 }
 
 textarea{
@@ -39,17 +52,15 @@ textarea{
     outline: none;
     padding: 5px;
     resize: none;
-    width: 635px;
+    width: 630px;
 }
 
-textarea:focus{
-    height: 100px;
-    outline: none;
-    padding: 5px;
-    width: 635px;
-}
 #tipoDemanda{
-    width: 270px;
+    width: 255px;
+}
+
+#seletorPessoa{
+    margin-right: 30px;
 }
 
 button{
@@ -94,6 +105,9 @@ select{
     margin: 10px;
     padding: 10px;
     width: 300px;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.637);
+    box-shadow: black 2px 1px 20px 1px;
 }
 
 .requerenteCard{
@@ -111,6 +125,7 @@ input{
     color: white;
     margin: 10px;
     outline: none;
+    font-weight: 700;
     
 }
 
@@ -118,18 +133,28 @@ input::placeholder{
     color: white;
     opacity: 0.7;
 }
+
+.radioArea{
+    display: flex;
+    justify-content: center;
+    line-height: 45px;
+}
+
+.radioselect{
+    color: white;
+    display: inline;
+}
 /************* OUTPUT ******************/
 
 #printDiv{
     background-color: white;
     border-radius: 5px;
-    border: 1px solid white;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     margin: 10px auto;
     padding: 10px;
-    width: 635px;
+    width: 645px;
 }
 
 p{
