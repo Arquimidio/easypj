@@ -4,7 +4,7 @@ let clearButton = document.getElementById("clearAll")
 let clearParameters = document.getElementById("clearParameters") 
 let allInputs = document.querySelectorAll("input")
 let data = new Date();
-let months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto"]
+let months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
 clearParameters.addEventListener("click", clearParams)
 clearButton.addEventListener("click", clear)
